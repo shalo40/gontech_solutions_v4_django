@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Solicitudes de Servicio</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Fecha de Solicitud</th>
+                <th>Tipo de Servicio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for solicitud_servicio in solicitudes_servicio %}
+                <tr>
+                    <td>{{ solicitud_servicio.cliente.nombre }} {{ solicitud_servicio.cliente.apellido }}</td>
+                    <td>{{ solicitud_servicio.fecha_solicitud }}</td>
+                    <td>{{ solicitud_servicio.tipo_servicio }}</td>
+                    <td>{{ solicitud_servicio.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'editar_solicitud_servicio' solicitud_servicio.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_solicitud_servicio' solicitud_servicio.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_solicitud_servicio' %}" class="btn btn-success">Añadir Solicitud</a>
+</div>
+{% endblock %}

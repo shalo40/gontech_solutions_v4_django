@@ -1,13 +1,14 @@
 # main/forms.py
 
 from django import forms
-from .models import (
-    Cliente, HistorialCliente, SolicitudServicio, Tecnico, OrdenTrabajo, Equipo, 
-    Presupuesto, Diagnostico, Pago, PruebaDiagnostico, SolicitudRepuesto, 
-    OrdenCompra, HistorialOrdenTrabajo, ServicioRealizado, RegistroFotografico
-)
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from .models import (
+    Cliente, HistorialCliente, SolicitudServicio, Tecnico, OrdenTrabajo,
+    Equipo, Presupuesto, Diagnostico, Pago, PruebaDiagnostico,
+    SolicitudRepuesto, OrdenCompra, HistorialOrdenTrabajo, ServicioRealizado,
+    RegistroFotografico
+)
 
 class ClienteForm(forms.ModelForm):
     class Meta:
