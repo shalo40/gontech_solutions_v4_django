@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Equipos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cliente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+                <tr>
+                    <td>{{ equipo.nombre }}</td>
+                    <td>{{ equipo.descripcion }}</td>
+                    <td>{{ equipo.cliente }}</td>
+                    <td>
+                        <a href="{% url 'editar_equipo' equipo.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_equipo' equipo.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_equipo' %}" class="btn btn-success">Añadir Equipo</a>
+</div>
+{% endblock %}

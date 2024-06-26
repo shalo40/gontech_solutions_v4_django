@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Presupuestos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Importe</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for presupuesto in presupuestos %}
+                <tr>
+                    <td>{{ presupuesto.cliente }}</td>
+                    <td>{{ presupuesto.descripcion }}</td>
+                    <td>{{ presupuesto.fecha }}</td>
+                    <td>{{ presupuesto.importe }}</td>
+                    <td>
+                        <a href="{% url 'editar_presupuesto' presupuesto.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_presupuesto' presupuesto.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_presupuesto' %}" class="btn btn-success">Añadir Presupuesto</a>
+</div>
+{% endblock %}
