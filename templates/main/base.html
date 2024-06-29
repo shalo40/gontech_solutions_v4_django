@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .nav-item {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_historiales_clientes' %}">Historiales Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_solicitudes_servicio' %}">Solicitudes Servicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_tecnicos' %}">Técnicos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_ordenes_trabajo' %}">Ordenes de Trabajo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_equipos' %}">Equipos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_presupuestos' %}">Presupuestos</a>
+                </li>
+                <!-- Agrega más elementos del menú según sea necesario -->
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Cerrar Sesión</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Registrarse</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
